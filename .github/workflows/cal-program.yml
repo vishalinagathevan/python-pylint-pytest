@@ -1,57 +1,62 @@
-# name: learn-github-actions
-# run-name: ${{ github.actor }} is learning GitHub Actions
-# on: [push]
-# jobs:
-#     runs-on: ubuntu-latest
-#     steps:
-#       - uses: actions/checkout@v4
-#       - uses: actions/setup-node@v3
-#       - run: pip install python
-#       - run: bats -v
-
-
-# -----------------------------------------------
-# This workflow will install Python dependencies, run tests and lint with a single version of Python
-# For more information see: https://docs.github.com/en/actions/automating-builds-and-tests/building-and-testing-python
-
 name: Python calculator application
 
 on:
   push:
+    branches:
+      - main  # or the branch you want to trigger the workflow
 
 jobs:
   build:
-
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-    - name: run with claculator python
-      run: |
-        python mathamatic.py      
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-jobs:
-  build:
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
 
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run calculator script
+        run: |
+          python mathamatic.py
+
+  test:
     runs-on: ubuntu-latest
 
     steps:
-    - uses: actions/checkout@v3
-    - name: Set up Python 3.10
-      uses: actions/setup-python@v3
-      with:
-        python-version: "3.10"
-    - name: Install dependencies
-      run: |
-        python -m pip install --upgrade pip
-        pip install pytest
-    - name: run with claculator program with pytest
-      run: |
-        pytest test.py 
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up Python 3.10
+        uses: actions/setup-python@v3
+        with:
+          python-version: "3.10"
+
+      - name: Install dependencies
+        run: |
+          python -m pip install --upgrade pip
+
+      - name: Run pytest
+        run: |
+          pytest test.py
+
+  deploy:
+    runs-on: ubuntu-latest
+
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
+
+      - name: Set up deployment
+        run: |
+          echo "Setting up deployment..."
+
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production..."
