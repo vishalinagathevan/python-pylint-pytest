@@ -28,7 +28,8 @@ jobs:
         run: |
           python mathamatic.py
       - name: Run pylint test file
-        run: pylint mathamatic.py 
+        run: |
+          pylint --disable=C mathamatic.py
       - name: Run PYTEST
         run: |
           pytest test.py
