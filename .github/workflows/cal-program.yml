@@ -95,10 +95,12 @@ jobs:
       - name: Install dependencies
         run: |
           pip install pylint
+          
 
       - name: Run pylint test file
         run: |
-          pylint mathamatic.py        
-      
+          pylint --verbose mathamatic.py
+  
 
       
+
