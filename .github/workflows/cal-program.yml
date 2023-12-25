@@ -46,20 +46,20 @@ jobs:
         run: |
           pytest test.py
 
-  # deploy:
-  #   runs-on: ubuntu-latest
+  deploy:
+    runs-on: ubuntu-latest
 
-  #   steps:
-  #     - name: Checkout code
-  #       uses: actions/checkout@v2
+    steps:
+      - name: Checkout code
+        uses: actions/checkout@v2
 
-  #     - name: Set up deployment
-  #       run: |
-  #         echo "Setting up deployment..."
+      - name: Set up deployment
+        run: |
+          echo "Setting up deployment..."
 
-  #     - name: Deploy to production
-  #       run: |
-  #         echo "Deploying to production..."
+      - name: Deploy to production
+        run: |
+          echo "Deploying to production..."
 
   Lint:
     runs-on: ubuntu-latest
