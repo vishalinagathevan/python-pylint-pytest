@@ -30,6 +30,7 @@ jobs:
       - name: Run pylint test file
         run: |
           pylint mathamatic.py 
+          sys.exit()
       - name: Run PYTEST
         run: |
           pytest test.py
